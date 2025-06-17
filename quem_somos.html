@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quem somos - OrgBite</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #2f4f31;
+    line-height: 1.6;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Layout containers */
+  .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 24px;
+    }
+
+  /* Header */
+  header {
+    background-color: #f4f6f0;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0.75rem 1rem;
+  }
+  .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.75rem;
+    color: #3b6e3b;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  /* Contact Phone */
+  .header-contact {
+    color: #4b7c4b;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: none;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .header-contact svg {
+    font-size: 1.2rem;
+    fill: #4b7c4b;
+  }
+  /* Search box */
+  form.search-form {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  form.search-form input[type="search"] {
+    width: 100%;
+    border-radius: 24px;
+    border: 1.8px solid #a4c291;
+    padding: 10px 38px 10px 18px;
+    font-size: 1rem;
+    color: #2f4f31;
+    transition: border-color 0.3s ease;
+  }
+  form.search-form input[type="search"]:focus {
+    outline: none;
+    border-color: #4b7c4b;
+  }
+  form.search-form button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #4b7c4b;
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+  /* User auth & cart */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header-actions a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #4b7c4b;
+    font-size: 0.9rem;
+  }
+  .header-actions a svg {
+    font-size: 1.8rem;
+    margin-left: 0.3rem;
+  }
+  .header-actions .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: #f4a742;
+    color: white;
+    font-size: 0.65rem;
+    border-radius: 12px;
+    padding: 0 6px;
+    font-weight: 700;
+  }
+
+  /* Navigation */
+  nav.primary-nav {
+    background: white;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
+  }
+  .nav-container {
+    max-width: 1200px;
+    margin: auto;
+    margin-left: 500px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+  }
+  .category-dropdown {
+    position: relative;
+  }
+  .category-btn {
+    background-color: #f4a742;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    font-weight: 600;
+    padding: 8px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+  }
+  .category-btn:hover, .category-btn:focus {
+    background-color: #db8a21;
+  }
+  .category-btn svg {
+    font-size: 1.2rem;
+  }
+  /* Dropdown menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+    padding: 0.5rem 0;
+    width: 160px;
+    display: none;
+    z-index: 10;
+  }
+  .dropdown-menu a {
+    display: block;
+    padding: 8px 1.5rem;
+    font-size: 0.9rem;
+    color: #2f4f31;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  .dropdown-menu a:hover, .dropdown-menu a:focus {
+    background-color: #f4f6f0;
+  }
+  .category-dropdown:hover .dropdown-menu, .category-dropdown:focus-within .dropdown-menu {
+    display: block;
+  }
+
+  /* Nav Links */
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-weight: 600;
+  }
+  .nav-links a {
+    position: relative;
+    color: #3b6e3b;
+    font-size: 1rem;
+    padding: 0.4rem 0;
+  }
+  .nav-links a:hover, .nav-links a:focus {
+    color: #f4a742;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #f4a742;
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after, .nav-links a:focus::after {
+    width: 100%;
+  }
+   /* Main content styling */
+   main {
+      padding: 48px 0;
+      margin-bottom: 50px;
+      background: #ffffff;
+    }
+
+    .page-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #2f4f2f;
+    }
+
+    .page-subtitle {
+      font-weight: 500;
+      text-align: center;
+      color: #4a6f46;
+      margin-bottom: 48px;
+      font-size: 1.15rem;
+    }
+  
+  /* About content layout */
+  .about-content {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-image img {
+      width: 75%;
+      transition: transform 0.3s ease;
+    }
+    .about-image img:hover,
+    .about-image img:focus {
+      transform: scale(1.03);
+      outline: none;
+    }
+
+    .about-text {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #365934;
+    }
+    .about-text p {
+      margin-bottom: 16px;
+      font-size: 1.15rem;
+    }
+    .highlight {
+      color: #f09819;
+      font-weight: 700;
+    }
+
+  /* Footer */
+  footer {
+    background-color: #f4f6f0;
+    padding: 2rem 1rem;
+    color: #536e3c;
+  }
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .footer-col {
+    flex: 1 1 200px;
+    min-width: 180px;
+  }
+  .footer-col h4 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #3b6e3b;
+  }
+  .footer-col a {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #536e3c;
+    transition: color 0.3s ease;
+  }
+  .footer-col a:hover, .footer-col a:focus {
+    color: #f4a742;
+  }
+  .footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    color: #4b7c4b;
+  }
+  /* Responsive grid for about content */
+    @media (min-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      nav.desktop-nav {
+        display: flex;
+      }
+      .mobile-toggle {
+        display: none;
+      }
+      nav.mobile-nav {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .container {
+        max-width: 1400px;
+      }
+    }
+  /* Responsive */
+  @media (min-width: 320px) and (max-width: 767px) {
+    .header-contact {
+      display: none;
+    }
+    .header-wrapper {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .search-form {
+      order: 3;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+    nav.primary-nav {
+      box-shadow: none;
+      background: #f4f6f0;
+      padding: 0.25rem 1rem;
+    }
+    .nav-container {
+      justify-content: space-between;
+    }
+    .nav-links {
+      display: none;
+    }
+    .category-dropdown {
+      flex: 1;
+    }
+    /* Hamburger menu */
+    .hamburger-btn {
+      display: flex;
+      background: none;
+      border: none;
+      color: #4b7c4b;
+      font-size: 1.8rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgb(0 0 0 / 0.15);
+    }
+    .mobile-menu.show {
+      display: flex;
+    }
+    .mobile-nav-link {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #3b6e3b;
+    }
+    .header-actions {
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+  }
+  @media (min-width: 768px) {
+    .header-contact {
+      display: flex;
+    }
+    .hamburger-btn {
+      display: none;
+    }
+    .nav-links {
+      display: flex !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-left, .hero-right {
+      flex: 1;
+    }
+    .hero-left {
+      text-align: left;
+    }
+  }
+</style>
+
+<!-- Load Google Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<!-- Load Google Fonts for logo -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <div class="header-wrapper" role="banner">
+    <a href="#" class="logo" aria-label="Orgbite - Logo">Orgbite</a>
+
+    <div class="header-contact" aria-label="Contact Phone">
+      
+    </div>
+
+    <form class="search-form" role="search" aria-label="Search products">
+      <input type="search" placeholder="Buscar produtos..." aria-label="Buscar produtos" />
+      <button type="submit" aria-label="Buscar"><span class="material-icons">search</span></button>
+    </form>
+
+    <div class="header-actions">
+      <a href="#" aria-label="Entrar ou Registrar-se" title="Entrar ou Registrar-se">
+        <span class="material-icons" aria-hidden="true">person_outline</span> Entrar
+      </a>
+      <a href="#" aria-label="Produtos favoritos" title="Favoritos">
+        <span class="material-icons" aria-hidden="true">favorite_border</span>
+      </a>
+      <a href="#" aria-label="Carrinho de Compras" title="Carrinho">
+        <span class="material-icons" aria-hidden="true">shopping_cart</span>
+        <span class="cart-badge" aria-live="polite">3</span>
+      </a>
+      <button aria-label="Menu Mobile" class="hamburger-btn" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileMenu" aria-haspopup="true">
+        <span class="material-icons">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="primary-nav" aria-label="Navegação principal">
+    <div class="nav-container container">
+      <div class="category-dropdown" tabindex="0">
+        <button class="category-btn" aria-haspopup="true" aria-expanded="false" aria-controls="categoryMenu">
+          Categorias
+          <span class="material-icons">arrow_drop_down</span>
+        </button>
+        <div id="categoryMenu" class="dropdown-menu" role="menu" aria-label="Categorias de produtos">
+          <a href="#" role="menuitem">Todos</a>
+          <a href="#" role="menuitem">Frutas</a>
+          <a href="#" role="menuitem">Verduras</a>
+          <a href="#" role="menuitem">Legumes</a>
+    
+        </div>
+      </div>
+      <div class="nav-links" role="menubar">
+        <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/code.html?#" role="menuitem" tabindex="0">Início</a>
+        <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/quem_somos.html#" role="menuitem" tabindex="0">Quem somos</a>
+        <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/blog.html#" role="menuitem" tabindex="0">Blog</a>
+        <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/contato.html#" role="menuitem" tabindex="0">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <nav id="mobileMenu" class="mobile-menu" aria-label="Menu principal para dispositivos móveis" hidden>
+    <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/code.html?#" class="mobile-nav-link">Início</a>
+    <a href="#" class="mobile-nav-link">Quem somos</a>
+    <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/blog.html#" class="mobile-nav-link">Blog</a>
+    <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/contato.html#" class="mobile-nav-link">Contato</a>
+  </nav>
+
+</header>
+
+<main class="container" role="main">
+    <h1 class="page-title">Quem Somos?</h1>
+
+    <section class="about-content">
+      <div class="about-image">
+        <img 
+          src="img/orgbite.png"
+          alt="Agricultura orgânica com vegetais crescendo em campo aberto sob luz natural"
+          loading="lazy"
+          />
+      </div>
+
+      <article class="about-text" tabindex="0">
+        <p>Na <span class="highlight">OrgBite</span>, acreditamos que a saúde começa na origem dos alimentos. Trabalhamos diretamente com produtores locais que utilizam práticas sustentáveis e orgânicas, garantindo que você receba sempre o melhor, sem agrotóxicos e com qualidade superior.</p>
+        <p>Desde a seleção da matéria-prima até a entrega, mantemos um cuidadoso compromisso com o meio ambiente e a sua saúde. Nossa missão é facilitar o seu acesso a alimentos frescos e naturais, respeitando as estações e o ciclo da natureza.</p>
+        <p>Somos mais que uma loja: somos um movimento pelo consumo consciente e pela valorização do que é verdadeiramente saudável, promovendo bem-estar para você e sua família.</p>
+      </article>
+    </section>
+  </main>
+
+<footer role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-col" aria-label="Informações da empresa">
+      <h4>Empresa</h4>
+      <a href="#" tabindex="0">Quem somos</a>
+      <a href="#" tabindex="0">Carreiras</a>
+      <a href="#" tabindex="0">Política de Privacidade</a>
+    </div>
+    <div class="footer-col" aria-label="Atendimento ao cliente">
+      <h4>Suporte</h4>
+      <a href="#" tabindex="0">Central de Ajuda</a>
+      <a href="#" tabindex="0">Contato</a>
+      <a href="#" tabindex="0">Devoluções</a>
+    </div>
+    <div class="footer-col" aria-label="Redes sociais">
+      <h4>Redes Sociais</h4>
+      <a href="https://www.linkedin.com/in/orgbite?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" tabindex="0" aria-label="Orgbite Linkedln" target="_blank" rel="noopener noreferrer">Linkedln</a>
+      <a href="https://www.instagram.com/orgbitebio?igsh=amZ3ajV2cDRrbThm" tabindex="0" aria-label="Orgbite Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" tabindex="0" aria-label="Orgbite Tiktok" target="_blank" rel="noopener noreferrer">Tiktok</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2024 Orgbite. Todos direitos reservados.
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+    hamburgerBtn.setAttribute('aria-expanded', String(!expanded));
+    if (!expanded) {
+      mobileMenu.hidden = false;
+      mobileMenu.classList.add('show');
+    } else {
+      mobileMenu.hidden = true;
+      mobileMenu.classList.remove('show');
+    }
+  });
+
+  // Filter buttons functionality (simple highlight only)
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const productGrid = document.getElementById('productGrid');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      filterButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      // Product filtering logic can be added here
+      // For now, we update aria-labelledby on grid for accessibility
+      productGrid.setAttribute('aria-labelledby', btn.id);
+    });
+  });
+</script>
+
+</body>
+</html>

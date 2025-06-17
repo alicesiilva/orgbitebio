@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<title>Blog - Orgbite</title>
+<style>
+
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #faf9f6;
+    color: #164e2a;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: #2f855a;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+
+  /* Layout container */
+  .container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    background: #ffffffcc;
+    backdrop-filter: saturate(180%) blur(16px);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 12px 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.75rem;
+    color: #3b6e3b;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+  nav a:hover {
+    background-color: #d1e7dd;
+  }
+
+  /* Hamburger for mobile */
+  .mobile-menu-button {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #2f855a;
+    cursor: pointer;
+  }
+
+  /* Blog main */
+  main {
+    padding: 48px 0 80px;
+    margin-bottom: 50px;
+
+  }
+
+  h1.page-title {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  /* Blog posts grid */
+  .blog-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+
+  /* Each post card */
+  article.post-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgb(45 78 52 / 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  article.post-card:hover, article.post-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgb(45 78 52 / 0.15);
+  }
+
+  /* Post image */
+  .post-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: scale 0.3s ease;
+  }
+  article.post-card:hover .post-image img,
+  article.post-card:focus-within .post-image img {
+    transform: scale(1.07);
+  }
+
+  /* Post content */
+  .post-content {
+    padding: 24px 32px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: #164e2a;
+  }
+  .post-excerpt {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #4a5a40;
+  }
+  .read-more {
+    margin-top: 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2f855a;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.25s ease;
+  }
+  .read-more:hover, .read-more:focus {
+    color: #1c4532;
+  }
+  .material-icons-outlined {
+    font-size: 1.25rem;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #2f855a;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    user-select: none;
+  }
+
+  /* Responsive breakpoints */
+  @media (min-width: 768px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    nav {
+      gap: 40px;
+    }
+    .blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .mobile-menu-button {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      background: #f0f7ec;
+      padding: 12px 24px;
+      border-radius: 0 0 12px 12px;
+      position: absolute;
+      top: 60px;
+      right: 24px;
+      width: 160px;
+      box-shadow: 0 3px 8px rgb(45 78 52 / 0.15);
+      z-index: 1001;
+    }
+    nav.show {
+      display: flex;
+    }
+    .mobile-menu-button {
+      display: inline-block;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header aria-label="Cabeçalho principal">
+  <div class="container header-inner">
+    <a href="#" class="logo" aria-label="Página Inicial do Ecolive">Orgbite</a>
+
+    <button class="mobile-menu-button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+      <span class="material-icons-outlined">menu</span>
+    </button>
+
+    <nav id="primary-navigation" role="navigation" aria-label="Navegação principal">
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/code.html?#">Início</a>
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/quem_somos.html">Quem somos</a>
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/blog.html#" aria-current="page">Blog</a>
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/contato.html#">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container" tabindex="-1">
+  <h1 class="page-title">Blog</h1>
+
+  <section class="blog-grid" aria-label="Lista de posts do blog">
+    <article class="post-card" tabindex="0">
+      <div class="post-image">
+        <img src="https://ceagesp.gov.br/wp-content/uploads/2015/09/Alface-05.11.2008-412x309.jpg" alt="Alface americana fresca e folhas de alface tradicionais lado a lado" />
+      </div>
+      <div class="post-content">
+        <h2 class="post-title">Qual a diferença da alface americana para a normal?</h2>
+        <p class="post-excerpt">Entenda as principais diferenças entre a alface americana e a alface comum, desde textura, sabor até seus benefícios nutricionais.</p>
+        <a href="#" class="read-more" aria-label="Leia o post sobre a diferença da alface americana para a normal">
+          Leia mais
+          <span class="material-icons-outlined" aria-hidden="true"></span>
+        </a>
+      </div>
+    </article>
+
+    <article class="post-card" tabindex="0">
+      <div class="post-image">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b84dee77-72a1-493d-b410-723b7d23fcbe.png" alt="Tomates vermelhos maduros em um prato de madeira" />
+      </div>
+      <div class="post-content">
+        <h2 class="post-title">Benefícios do tomate</h2>
+        <p class="post-excerpt">Descubra os benefícios para a saúde ao consumir tomates, desde antioxidantes até vitaminas essenciais.</p>
+        <a href="#" class="read-more" aria-label="Leia o post sobre benefícios do tomate">
+          Leia mais
+          <span class="material-icons-outlined" aria-hidden="true"></span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Placeholder for demonstration -->
+    <article class="post-card" tabindex="0">
+      <div class="post-image">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d9b1009-8c28-429a-ab8e-4e1e6c03465c.png" alt="Imagem ilustrativa para conteúdo do blog de exemplo 3" />
+      </div>
+      <div class="post-content">
+        <h2 class="post-title">Dicas para uma alimentação mais saudável</h2>
+        <p class="post-excerpt">Saiba como melhorar seus hábitos alimentares com dicas simples que fazem a diferença no seu dia a dia.</p>
+        <a href="#" class="read-more" aria-label="Leia o post sobre dicas para uma alimentação mais saudável">
+          Leia mais
+          <span class="material-icons-outlined" aria-hidden="true"></span>
+        </a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  &copy; 2024 Orgbite. Todos os direitos reservados.
+</footer>
+
+<script>
+  // Mobile menu toggle functionality
+  const menuButton = document.querySelector('.mobile-menu-button');
+  const nav = document.getElementById('primary-navigation');
+
+  menuButton.addEventListener('click', () => {
+    const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+    menuButton.setAttribute('aria-expanded', !expanded);
+    nav.classList.toggle('show');
+  });
+</script>
+</body>
+</html>
+
