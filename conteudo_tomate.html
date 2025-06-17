@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<title>Conteúdo</title>
+<style>
+
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #faf9f6;
+    color: #164e2a;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: #2f855a;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+
+  /* Layout container */
+  .container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    background: #ffffffcc;
+    backdrop-filter: saturate(180%) blur(16px);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 12px 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.75rem;
+    color: #3b6e3b;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+  nav a:hover {
+    background-color: #d1e7dd;
+  }
+
+  /* Hamburger for mobile */
+  .mobile-menu-button {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #2f855a;
+    cursor: pointer;
+  }
+
+  /* Blog main */
+  main {
+    padding: 48px 0 80px;
+    margin-bottom: 50px;
+
+  }
+
+  h1.page-title {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+   /* Breadcrumb container */
+    nav.breadcrumb {
+      margin: 35px 0 32px;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #3a5346;
+      gap: 1px;
+    }
+    nav.breadcrumb a {
+      font-weight: 600;
+      color: #2e7d32;
+    }
+    nav.breadcrumb a:hover, nav.breadcrumb a:focus-visible {
+      text-decoration: underline;
+    }
+    nav.breadcrumb span {
+      margin: 0 6px;
+    }
+
+ main {
+      flex-grow: 1;
+      padding: 24px 0 48px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.05);
+      max-width: 960px;
+      margin: 0 auto 48px;
+    }
+    article.post-content {
+      padding: 0 32px 48px;
+    }
+    article.post-content h1 {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #1a3d22;
+    }
+    article.post-content .meta {
+      font-size: 0.9rem;
+      color: #4b6e44;
+      margin-bottom: 32px;
+      font-weight: 600;
+    }
+    article.post-content img.post-image {
+      margin: 0 auto 32px;
+      display: block;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+      width: 100%;
+    }
+    article.post-content p {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      color: #2e4d25;
+      line-height: 1.65;
+    }
+    article.post-content h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 40px 0 24px;
+      color: #27632a;
+    }
+    article.post-content ul {
+      padding-left: 1.6rem;
+      margin-bottom: 24px;
+      color: #3b5939;
+    }
+    article.post-content ul li {
+      margin-bottom: 8px;
+    }
+
+  
+  /* Footer */
+  footer {
+    background-color: #2f855a;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    user-select: none;
+  }
+
+  /* Responsive breakpoints */
+  @media (min-width: 768px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    nav {
+      gap: 40px;
+    }
+    .blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .mobile-menu-button {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      background: #f0f7ec;
+      padding: 12px 24px;
+      border-radius: 0 0 12px 12px;
+      position: absolute;
+      top: 60px;
+      right: 24px;
+      width: 160px;
+      box-shadow: 0 3px 8px rgb(45 78 52 / 0.15);
+      z-index: 1001;
+    }
+    nav.show {
+      display: flex;
+    }
+    .mobile-menu-button {
+      display: inline-block;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header aria-label="Cabeçalho principal">
+  <div class="container header-inner">
+    <a href="#" class="logo" aria-label="Página Inicial do Ecolive">Orgbite</a>
+
+    <button class="mobile-menu-button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+      <span class="material-icons-outlined">menu</span>
+    </button>
+
+    <nav id="primary-navigation" role="navigation" aria-label="Navegação principal">
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/code.html?#">Início</a>
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/quem_somos.html">Quem somos</a>
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/blog.html#" aria-current="page">Blog</a>
+      <a href="file:///C:/Users/alice/OneDrive/%C3%81rea%20de%20Trabalho/Orgbite/contato.html#">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb container" aria-label="Caminho de navegação">
+    <a href="#" tabindex="0">Início</a>
+    <span aria-hidden="true">›</span>
+    <a href="#" tabindex="0">Blog</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Benefícios do tomate</span>
+  </nav>
+
+  <main>
+    <article class="post-content" role="article" aria-labelledby="post-title">
+      <h1 id="post-title">Benefícios do tomate</h1>
+      <p class="meta">Publicado em 12 de outubro de 2023 | Categoria: Alimentação saudável</p>
+      <img
+        src="https://content.paodeacucar.com/wp-content/uploads/2019/01/curiosidades-sobre-o-tomate-capa.png"
+        alt="Foto de alface americana ao lado de alface comum em uma bancada"
+        class="post-image"
+        loading="lazy"
+      />
+      <p>
+        O tomate é muito mais do que um ingrediente versátil na cozinha. Rico em nutrientes e compostos poderosos, ele oferece uma série de benefícios para a saúde que muitas pessoas desconhecem. Neste post, vamos explorar as principais razões para incluir o tomate na sua alimentação diária e como ele pode contribuir para o bem-estar do seu corpo.
+      </p>
+      
+      <h2>1. Fonte poderosa de antioxidantes</h2>
+      <p>
+        Um dos compostos mais importantes presentes no tomate é o licopeno, um antioxidante natural responsável por sua coloração avermelhada. O licopeno combate os radicais livres, ajudando a prevenir o envelhecimento precoce das células e reduzindo o risco de doenças crônicas, como o câncer e doenças cardiovasculares.
+      </p>
+    
+      <h2>2. Coração mais saudável</h2>
+      <p>
+        O consumo regular de tomates pode melhorar a saúde do coração. Estudos mostram que o licopeno, juntamente com o potássio presente no tomate, pode ajudar a reduzir a pressão arterial, equilibrar os níveis de colesterol e melhorar a circulação sanguínea.
+      </p>
+
+       <h2>3. Prevenção de doenças neurodegenerativas</h2>
+      <p>
+        Os antioxidantes do tomate também desempenham um papel importante na proteção do cérebro, ajudando a prevenir doenças como Alzheimer e outras condições relacionadas ao envelhecimento cognitivo.
+      </p>
+
+
+       <h2>4. Fortalece os ossos</h2>
+      <p>
+        Graças à vitamina K e ao cálcio, o tomate contribui para a manutenção da saúde óssea, ajudando na regeneração dos tecidos e prevenindo a osteoporose.
+      </p>
+
+       <h2>Como incluir tomate na sua alimentação?</h2>
+      <p>
+       O tomate pode ser consumido cru em saladas, cozido em molhos, em sucos, ou até mesmo assado. Quanto mais natural e menos processado, melhor será o aproveitamento dos seus nutrientes.
+      </p>
+
+       <p>
+      O tomate é um verdadeiro aliado da saúde, acessível, versátil e extremamente nutritivo. Incluir esse alimento no seu dia a dia é uma forma simples e deliciosa de cuidar do seu corpo de dentro para fora. Experimente novas receitas e aproveite todos os benefícios que ele tem a oferecer!
+      </p>
+
+      <p><a href="blog.html" aria-label="Voltar para a lista de posts">← Voltar para o blog</a></p>
+    </article>
+  </main>
+
+
+<footer>
+  &copy; 2024 Orgbite. Todos os direitos reservados.
+</footer>
+
+<script>
+  // Mobile menu toggle functionality
+  const menuButton = document.querySelector('.mobile-menu-button');
+  const nav = document.getElementById('primary-navigation');
+
+  menuButton.addEventListener('click', () => {
+    const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+    menuButton.setAttribute('aria-expanded', !expanded);
+    nav.classList.toggle('show');
+  });
+</script>
+</body>
+</html>
