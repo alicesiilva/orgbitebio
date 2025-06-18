@@ -74,16 +74,6 @@
     background-color: #d1e7dd;
   }
 
-  /* Hamburger for mobile */
-  .mobile-menu-button {
-    display: none;
-    font-size: 1.8rem;
-    background: none;
-    border: none;
-    color: #2f855a;
-    cursor: pointer;
-  }
-
   /* Blog main */
   main {
     padding: 48px 0 80px;
@@ -220,19 +210,38 @@
       display: flex;
     }
     @media (min-width: 320px) and (max-width: 767px) {
-    .hamburger-btn {
-        display: flex
-;
-        background: none;
-        border: none;
-        color: #4b7c4b;
-        font-size: 1.8rem;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
+      .hamburger.btn {
+      display: flex;
+      background: none;
+      border: none;
+      color: #4b7c4b;
+      font-size: 1.8rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgb(0 0 0 / 0.15);
+    }
+    .mobile-menu.show {
+      display: flex;
+    }
+    .mobile-nav-link {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #3b6e3b;
+    }
   }
       
 </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
 </head>
 <body>
