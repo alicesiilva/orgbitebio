@@ -221,10 +221,19 @@
     nav.show {
       display: flex;
     }
-    .mobile-menu-button {
-      display: inline-block;
-    }
+    @media (min-width: 320px) and (max-width: 767px) {
+    .hamburger-btn {
+        display: flex
+;
+        background: none;
+        border: none;
+        color: #4b7c4b;
+        font-size: 1.8rem;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
   }
+      
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
 </head>
